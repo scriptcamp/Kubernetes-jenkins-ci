@@ -3,6 +3,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: jenkins-pv-claim
+  namespace: devops-tools
 spec:
   accessModes:
     - ReadWriteOnce
@@ -16,6 +17,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: jenkins-deployment
+  namespace: devops-tools
 spec:
   replicas: 1
   selector:
@@ -75,6 +77,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: jenkins-service
+  namespace: devops-tools
   annotations:
       prometheus.io/scrape: 'true'
       prometheus.io/path:   /
